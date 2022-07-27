@@ -1,0 +1,67 @@
+//Chứa biến và mixin
+//Khai báo biến trong sass $ten-bien: giá trị;
+$colors-red :("100":"# FF6347", "200":"#EE5C42", "300":"#CD4F39");
+
+@each $key,
+$value in $colors-red {
+    .text-red-#{$key} {
+        color: $value;
+    }
+}
+
+
+
+//-------------bg:css cho màu background-------- */
+$bg-c1-primary: #2a73dd;
+$bg-c1-light: #fff;
+$bg-transparent: rgba(0, 0, 0, 0);
+$bg-none: none;
+
+/*-----text: css cho text ---------*/
+//text-color: màu của text
+$text-c1-primary: #2a73dd;
+$text-c1-dark: #000;
+$text-c1-light: #fff;
+//text-size
+$text-xs: 10px;
+$text-base: 16px;
+$text-xl: 18px;
+$text-2xl: 20px;
+$text-3xl: 30px;
+$text-4xl: 40px;
+$text-5xl: 50px;
+$text-6xl: 60px;
+$text-7xl: 70px;
+//text-font-weight
+$text-light: 300;
+$text-regular: 400;
+$text-semibold: 600;
+$text-bold: 700;
+
+//@include(include): Dùng để format truyền động giá trị cho các thuộc tính css
+//@extend: Định nghĩa trước các class css có thể tái sử dụng 
+
+
+/* -------------------- mixin -----------*/
+@mixin text($fs: $text-base, $fw: $text-regular, $c: $text-c1-dark) {
+    font-size: $fs;
+    font-weight: $fw;
+    color: $c;
+}
+
+@mixin button($fs, $fw, $c, $bg, $pd, $bd, $br, $bg-hover, $c-hover) {
+    // font-size: 16px;
+    // font-weight: 600;
+    // color: #000;
+    @include text($fs, $fw , $c );
+    background: $bg;
+    padding: $pd;
+    border: $bd;
+    border-radius: $br;
+    cursor: pointer;
+
+    &:hover {
+        background: $bg-hover;
+        color: $c-hover;
+    }
+}
